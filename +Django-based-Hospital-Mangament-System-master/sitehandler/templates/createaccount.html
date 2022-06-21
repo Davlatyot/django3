@@ -1,0 +1,116 @@
+{% include 'include.html' %}
+{% include 'navbar.html' %}
+{% block body %}
+{% load static %}
+<div class="row register-form">
+    <div class="col-md-8 offset-md-2">
+        <form class="custom-form" style="margin-top: 0px;" method="post">
+            {% csrf_token %}
+            <h1>Ro'yxatdan o'tish</h1>
+            <div class="form-row form-group">
+                <div class="col-sm-4 label-column">
+                    <label class="col-form-label" for="name-input-field">Ismi </label>
+                </div>
+                <div class="col-sm-6 input-column">
+                    <input class="form-control" type="text" name="name" required="">
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <div class="col-sm-4 label-column">
+                    <label class="col-form-label" for="email-input-field">Email </label>
+                </div>
+                <div class="col-sm-6 input-column">
+                    <input class="form-control" type="email" name="email" required="">
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <div class="col-sm-4 label-column">
+                    <label class="col-form-label" for="pawssword-input-field">Parol </label>
+                </div>
+                <div class="col-sm-6 input-column">
+                    <input class="form-control" type="password" name="password" required="">
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <div class="col-sm-4 label-column">
+                    <label class="col-form-label" for="repeat-pawssword-input-field">Parolni takrorlang </label>
+                </div>
+                <div class="col-sm-6 input-column">
+                    <input class="form-control" type="password" name="repeatpassword" required="">
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <div class="col-sm-4 label-column">
+                    <label class="col-form-label" for="dropdown-input-field">Jinsi</label>
+                </div>
+                <div class="col-sm-6 input-column">
+                    <select class="form-control" name="gender" required="">
+                        <optgroup label="Select Gender">
+                            <option value="Male">Erkak</option>
+                            <option value="Female">Ayol</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <div class="col-sm-4 label-column">
+                    <label class="col-form-label" for="name-input-field">Telefon nomeri</label>
+                </div>
+                <div class="col-sm-6 input-column">
+                    <input class="form-control" type="tel" name="phonenumber" required="">
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <div class="col-sm-4 label-column">
+                    <label class="col-form-label" for="name-input-field">Manzil</label>
+                </div>
+                <div class="col-sm-6 input-column">
+                    <textarea class="form-control" name="address" required=""></textarea>
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <div class="col-sm-4 label-column">
+                    <label class="col-form-label" for="name-input-field">Tug'ulgan kuni</label>
+                </div>
+                <div class="col-sm-6 input-column">
+                    <input class="form-control" type="date" name="dateofbirth" required="">
+                </div>
+            </div>
+            <div class="form-row form-group">
+                <div class="col-sm-4 label-column">
+                    <label class="col-form-label" for="name-input-field">Qon guruh</label>
+                </div>
+                <div class="col-sm-6 input-column">
+                    <select class="form-control" name="bloodgroup" required="">
+                        <optgroup label="">
+                            <option value="O+" selected="">1+</option>
+                            <option value="O-">1-</option>
+                            <option value="A+">2+</option>
+                            <option value="A-">2-</option>
+                            <option value="B+">3+</option>
+                            <option value="B-">3-</option>
+                            <option value="AB+">4+</option>
+                            <option value="AB-">4-</option>
+                        </optgroup>
+                    </select>
+                </div>
+            </div>
+            <button class="btn btn-primary submit-button" type="submit">Ruyxatdan o'tish</button>
+        </form>
+    </div>
+</div>
+<div class="scroll-top-wrapper"><span class="scroll-top-inner"><i class="fa fa-arrow-circle-up"></i></span></div>
+{% if error == "no" %}
+<script type="text/javascript">
+    alert('foydalanuvchi muvaffaqiyatli qutqarildi..........')
+    window.location = ('{% url 'loginpage' %}')
+</script>
+{% endif%}
+
+{% if error == "yes" %}
+<script type="text/javascript">
+    /*alert('{{e}}')*/
+    alert('Email allaqachon mavjud....')
+</script>
+{% endif%}
+{% endblock %}
